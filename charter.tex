@@ -39,7 +39,7 @@ codirector, % Uncomment to add a codirector to the title page
 \pertenenciaJurTres{pertenencia (3)}
  
 \fechaINICIO{1 de Marzo de 2022}		%Fecha de inicio de la cursada de GdP \fechaInicioName
-\fechaFINALPlan{18 de junio de 2022} 	%Fecha de final de cursada de GdP
+\fechaFINALPlan{18 de junio de 2022} 		%Fecha de final de cursada de GdP
 \fechaFINALTrabajo{15 de mayo de 2022}	%Fecha de defensa pública del trabajo final
 
 
@@ -68,7 +68,8 @@ codirector, % Uncomment to add a codirector to the title page
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-0.1      & Creación del documento.                                 &\fechaInicioName \\ \hline
+1.0	& Creación del documento.						& 01/03/2022 \\ \hline
+1.1	& Se completan las secciones 1 a 5 inclusive			& 15/03/2022 \\ \hline
 %1      & Se completa hasta el punto 4 inclusive                 & dd/mm/aaaa \\ \hline
 %2      & Se completa hasta el punto 7 inclusive
 %		  Se puede agregar algo más \newline
@@ -92,7 +93,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{el desarrollo y construcción de un dispositivo integrado capaz de ejecutar pruebas sobre un amplificador de fibra óptica}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{el desarrollo y construcción de un dispositivo integrado capaz de monitorear y controlar un amplificador de fibra óptica}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -115,7 +116,15 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-El presente proyecto se destaca especialmente por incorporar todas los componentes necesarios para poder...
+Un EDFA (Erbuim-Doped Fiber Amplifier) es un dispositivo optoelectrónico que permite amplificar una señal lumínica transportada mediante una fibra óptica desde 1 mW de potencia hasta 1 W (unas mil veces). Estos amplificadores se usan particularmente en las bandas L y C del espectro de longitud de onda para compensar las pérdidas en la fibra óptica en comunicaciones de gran distancia.
+
+En general, un EDFA además de contar con una entrada y una salida de fibra óptica, tiene un puerto que lleva la tensión de alimentación (potencia) para la amplificación propiamente dicha y varias señales de entrada y salida, tanto analógicas como digitales, que describen el estado en que se encuentra, valores de ciertos parámetros y permiten establecer una comunicación con el dispositivo maestro que lo comandará.
+
+El dispositivo a desarrollar debe poder conectarse directamente al puerto de un EDFA del fabricante Nuphoton, proveer la corriente necesaria para que funcione, medirla y presentarle al usuario de forma clara y sencilla todos los parámetros relevantes recibidos. Para esto debe contar con un display LCD táctil que además permita enviarle comandos.
+
+El presente proyecto se destaca especialmente por incorporar todos los componentes necesarios para poder monitorear y comandar este tipo de amplificadores.
+
+Este equipo se enmarca como uno de los denominados Equipamiento Eléctrico de Soporte en Tierra perteneciente al departamento de Ensamble, Integración y Testing de la empresa Skyloom Global y será utilizado en el desarrollo y ensamble de lotes de terminales ópticas satelitales para órbita LEO.
 
 \begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
 El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
@@ -183,7 +192,7 @@ Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hli
 Equipo        & miembro1 \newline 
 				miembro2          &              	&        	\\ \hline
 Opositores    &                   &              	&        	\\ \hline
-Usuario final &                   &              	&        	\\ \hline
+Usuario final & -                 & Skyloom Global	& Dpto. de Integración y Testing	\\ \hline
 \end{tabularx}
 \end{table}
 
@@ -209,16 +218,35 @@ Por ejemplo:
 \section{3. Propósito del proyecto}
 \label{sec:proposito}
 
+El propósito de este proyecto es desarrollar un dispositivo integrado capaz de proveer al usuario una forma sencilla de monitorear y comandar un EDFA, sin necesidad de usar una computadora. De esta forma el dispositivo se utilizará en dos instancias bien definidas: la primera es durante el desarrollo de nuevos modelos de terminales opticas satelitales y la segunda es durante la integración de grandes lotes para su fabricación en masa.
+
 \begin{consigna}{red}
 ¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
 
-El propósito de este proyecto es desarrollar un sistema integrado capaz de 
 
 Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
 \end{consigna}
 
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
+
+Este proyecto queda delimitado por:
+\begin{itemize}
+	\item El diseño y construcción de un dispositivo funcional de un tester que consta de un sistema embebido sobre un placa.
+	\item Integración completa del dispositivo en soporte mecánico.
+	\item Verificación funcional del producto final.
+	\item Simulación de funcionamiento de hardware mediante software apropiado.
+	\item Diseño e implementación de la arquitectura de software.
+	\item Documentación de diseño para su producción y manual de uso.
+	\item Diseño e implementación del hardware de protección para la interfaz con el EDFA.
+\end{itemize}
+
+Por otro lado, queda excluído del presente proyecto:
+\begin{itemize}
+	\item Especificación de las pruebas a ejecutar sobre el amplificador óptico utilizando el dispositivo.
+	\item Procesamiento e interpretación de los valores de los parámetros enviados por el EDFA.
+	\item Diseño y construcción de la fuente de alimentación externa.
+\end{itemize}
 
 \begin{consigna}{red}
 ¿Qué se incluye y que no se incluye en este proyecto?
@@ -237,19 +265,15 @@ Explicitar además todo lo que no quede incluido (``El presente proyecto no incl
 
 Para el desarrollo del presente proyecto se supone que:
 \begin{itemize}
+	\item El cliente proveerá una versión inicial de la placa del dispositivo final para desarrollo.
 	\item Se podrá contar con los insumos necesarios en tiempo y forma.
 	\item El cliente posee las instalaciones e instrumental necesario para realizar mediciones y ensayos.
 	\item Se dispondrá del tiempo necesario para el desarrollo del proyecto.
-	\item Se cuenta con toda la información técnica a cerca del amplificador óptico.
+	\item Se cuenta con toda la información técnica acerca del amplificador óptico, sus parámetros y funcionamiento.
+	\item Se contará con un EDFA o con una placa electrónica que simule su comportamiento.
 \end{itemize}
 
 \begin{consigna}{red}
-``Para el desarrollo del presente proyecto se supone que: ...''
-
-\begin{itemize}
-	\item Supuesto 1
-	\item Supuesto 2...
-\end{itemize}
 
 Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
 \end{consigna}

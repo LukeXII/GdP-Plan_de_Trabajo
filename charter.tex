@@ -7,7 +7,7 @@ codirector, % Uncomment to add a codirector to the title page
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
-\titulo{Tester para amplificador óptico} 
+\titulo{Tester para amplificador de fibra óptica} 
 
 % Nombre del posgrado, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \degreename
 \posgrado{Carrera de Especialización en Sistemas Embebidos} 
@@ -93,7 +93,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en \textcolor{red}{el desarrollo y construcción de un dispositivo integrado capaz de monitorear y controlar un amplificador de fibra óptica}, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el desarrollo y construcción de un dispositivo integrado capaz de monitorear y controlar un amplificador de fibra óptica, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -116,15 +116,17 @@ Se adjunta a esta acta la planificación inicial.
 \section{1. Descripción técnica-conceptual del proyecto a realizar}
 \label{sec:descripcion}
 
-Un EDFA (Erbuim-Doped Fiber Amplifier) es un dispositivo optoelectrónico que permite amplificar una señal lumínica transportada mediante una fibra óptica desde 1 mW de potencia hasta 1 W (unas mil veces). Estos amplificadores se usan particularmente en las bandas L y C del espectro de longitud de onda para compensar las pérdidas en la fibra óptica en comunicaciones de gran distancia.
+Un EDFA (Erbuim-Doped Fiber Amplifier) es un dispositivo optoelectrónico que permite amplificar una señal lumínica transportada mediante una fibra óptica desde una potencia del orden de 1 mW hasta aproximadamente 1 W (unas mil veces). Estos amplificadores se usan particularmente en las bandas L y C del espectro de longitud de onda para compensar las pérdidas en la fibra óptica en comunicaciones de gran distancia.
 
-En general, un EDFA además de contar con una entrada y una salida de fibra óptica, tiene un puerto que lleva la tensión de alimentación (potencia) para la amplificación propiamente dicha y varias señales de entrada y salida, tanto analógicas como digitales, que describen el estado en que se encuentra, valores de ciertos parámetros y permiten establecer una comunicación con el dispositivo maestro que lo comandará.
+En general, un EDFA además de contar con una entrada y una salida de fibra óptica tiene un microcontrolador interno encargado de controlar el proceso de amplificación. Para poder comunicarse con el exterior este cuenta con un puerto para la conexión de varias señales, entre ellas la tensión de alimentación (potencia) para la amplificación propiamente dicha y otras señales de entrada y salida tanto analógicas como digitales, que describen el estado del amplificador, valores de ciertos parámetros y una interfaz serie que permite establecer una comunicación con el dispositivo maestro que lo comandará.
 
-El dispositivo a desarrollar debe poder conectarse directamente al puerto de un EDFA del fabricante Nuphoton, proveer la corriente necesaria para que funcione, medirla y presentarle al usuario de forma clara y sencilla todos los parámetros relevantes recibidos. Para esto debe contar con un display LCD táctil que además permita enviarle comandos.
+El dispositivo a desarrollar debe poder conectarse directamente al puerto de un EDFA del fabricante Nuphoton, proveer la corriente necesaria para que funcione, medirla y presentarle al usuario de forma clara este valor y el resto de los parámetros relevantes recibidos. Para esto debe contar con un display LCD táctil que además permita enviarle comandos al amplificador.
 
-El presente proyecto se destaca especialmente por incorporar todos los componentes necesarios para poder monitorear y comandar este tipo de amplificadores.
+Por otro lado, como el amplificador es un dispositivo muy caro que ademas formará parte de una terminal de comunicación óptica satelital destinada a volar, es imperativo que se tomen las medidas necesarias para evitar dañarlo durante la etapa de integración, tanto mecánica como electricamente. Por dicha razón el dispositivo debe contar con las protecciones eléctricas pertinentes.
 
-Este equipo se enmarca como uno de los denominados Equipamiento Eléctrico de Soporte en Tierra perteneciente al departamento de Ensamble, Integración y Testing de la empresa Skyloom Global y será utilizado en el desarrollo y ensamble de lotes de terminales ópticas satelitales para órbita LEO.
+Si bien el fabricante del EDFA ofrece una placa para establecer una comunicación entre el EDFA y una PC, ademas de ser costosa y no funcionar del todo correctamente, esta no cuenta con la conexión de todas las señales por lo que hace que conocer el estado exacto de todas las señales y parámetros lleve mucho tiempo y requiera una computadora. El presente proyecto se destaca especialmente por incorporar todos los componentes necesarios para poder monitorear y comandar de forma segura este tipo de amplificadores en un solo dispositivo, presentando al usuario los parámetros relevantes del EDFA y su consumo de corriente sin la necesidad de una PC.
+
+Este equipo se enmarca como uno de los denominados Equipamiento Eléctrico de Soporte en Tierra perteneciente al departamento de Ensamble, Integración y Testing de la empresa Skyloom Global y será utilizado tanto durante la etapa de desarrollo como de ensamble de lotes de terminales ópticas satelitales para órbita LEO.
 
 \begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
 El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
@@ -232,13 +234,13 @@ Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de e
 
 Este proyecto queda delimitado por:
 \begin{itemize}
-	\item El diseño y construcción de un dispositivo funcional de un tester que consta de un sistema embebido sobre un placa.
+	\item Diseño y construcción de un dispositivo funcional de un tester que consta de un sistema embebido sobre un placa.
 	\item Integración completa del dispositivo en soporte mecánico.
 	\item Verificación funcional del producto final.
 	\item Simulación de funcionamiento de hardware mediante software apropiado.
-	\item Diseño e implementación de la arquitectura de software.
+	\item Diseño e implementación de la arquitectura de software del dispositivo.
+	\item Diseño e implementación del software a ejecutarse en la PC.
 	\item Documentación de diseño para su producción y manual de uso.
-	\item Diseño e implementación del hardware de protección para la interfaz con el EDFA.
 \end{itemize}
 
 Por otro lado, queda excluído del presente proyecto:

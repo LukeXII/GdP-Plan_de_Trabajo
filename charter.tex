@@ -27,7 +27,7 @@ codirector, % Uncomment to add a codirector to the title page
 \pertenenciaCoDirector{FIUBA}
 
 % Nombre del cliente, quien va a aprobar los resultados del proyecto, se puede usar con el comando \clientename y \empclientename
-\cliente{Nombre del cliente}
+\cliente{Nicolas Casco}
 \empresaCliente{Skyloom Global}
 
 % Nombre y pertenencia de los jurados, se pueden usar el cualquier lugar del documento con el comando \jurunoname, \jurdosname y \jurtresname y \perteunoname, \pertedosname y \pertetresname.
@@ -124,59 +124,25 @@ El dispositivo a desarrollar debe poder conectarse directamente al puerto de un 
 
 Por otro lado, como el amplificador es un dispositivo muy caro que ademas formará parte de una terminal de comunicación óptica satelital destinada a volar, es imperativo que se tomen las medidas necesarias para evitar dañarlo durante la etapa de integración, tanto mecánica como electricamente. Por dicha razón el dispositivo debe contar con las protecciones eléctricas pertinentes.
 
+En la Figura \ref{fig:diagTester} se presenta el diagrama en bloques del sistema. Se observa que este consta de un microcontrolador como controlador central al cual se encuentran conectados todo el resto de los periféricos e interfaces. Ademas aclara que el EDFA, la PC y la fuente de alimentación externa no forman parte del dispositivo a desarrollar, solamente se encuentran conectados a este mediante algun tipo de interfaz.
+
+
+\begin{figure}[H]
+\centering 
+\includegraphics[width=0.75\textwidth]{./Figuras/diagTester.jpg}
+\caption{Diagrama en bloques del sistema}
+\label{fig:diagTester}
+\end{figure}
+
+
 Si bien el fabricante del EDFA ofrece una placa para establecer una comunicación entre el EDFA y una PC, ademas de ser costosa y no funcionar del todo correctamente, esta no cuenta con la conexión de todas las señales por lo que hace que conocer el estado exacto de todas las señales y parámetros lleve mucho tiempo y requiera una computadora. El presente proyecto se destaca especialmente por incorporar todos los componentes necesarios para poder monitorear y comandar de forma segura este tipo de amplificadores en un solo dispositivo, presentando al usuario los parámetros relevantes del EDFA y su consumo de corriente sin la necesidad de una PC.
 
 Este equipo se enmarca como uno de los denominados Equipamiento Eléctrico de Soporte en Tierra perteneciente al departamento de Ensamble, Integración y Testing de la empresa Skyloom Global y será utilizado tanto durante la etapa de desarrollo como de ensamble de lotes de terminales ópticas satelitales para órbita LEO.
-
-\begin{consigna}{red} % El bloque "consigna" se usa para poner texto en rojo y dar una pequeña ayuda sobre cómo completar la sección
-El objetivo es que el lector en una o dos páginas entienda de qué se trata el proyecto y cuáles son sus desafíos, su motivación y su importancia.
-
-Se debe destacar claramente cuál es el valor que agrega el proyecto a realizar. ``El presente proyecto se destaca especialmente por incorporar tal cosa... Esto lo diferencia de otros sistemas similares en que ...''
-
-Puede ser útil incluir en esta sección la respuesta a alguna de estas preguntas:
-
-\begin{itemize}
-	\item ¿Cómo se vincula este proyecto con la misión de la organización?
-	\item ¿Cómo se inserta este proyecto en el modelo de negocio de la organización?
-	\item ¿Ayuda a la explicación si se incluye un lienzo Canvas del Modelo de Negocio?
-	\item ¿En qué estado del ciclo de vida está el producto que se desea reemplazar o mejorar?
-	\item ¿Cuáles son las necesidades que debe satisfacer?
-	\item ¿Por dónde pasa la innovación?
-\end{itemize}
-
-La descripción técnica-conceptual \textbf{debe incluir al menos un diagrama en bloques del sistema} y una frase como la siguiente: ``En la Figura \ref{fig:diagBloques} se presenta el diagrama en bloques del sistema. Se observa que...''. Luego recién más abajo de haber puesto esta frase, se pone la figura. La regla es que las figuras nunca pueden ir antes de ser mencionadas en el texto, porque sino el lector no entiende por qué de pronto aparece una figura.
-
-%\vspace{25px}
-
-\begin{figure}[htpb]
-\centering 
-\includegraphics[width=.5\textwidth]{./Figuras/diagBloques.png}
-\caption{Diagrama en bloques del sistema}
-\label{fig:diagBloques}
-\end{figure}
-
-\vspace{25px}
-
-El tamaño de la tipografía en TODAS las figuras debe ser adecuado para que NO pase lo que ocurre acá, donde el lector debe esforzarse para poder leer el texto. Los colores usados en el diagrama deben ser adecuados, tal que ayuden a comprender mejor el diagrama, preferentemente en la gama de colores pastel.
-\end{consigna}
 
 
 \section{2. Identificación y análisis de los interesados}
 \label{sec:interesados}
 
-\begin{consigna}{red} 
-Nota: (borrar esto y todas las consignas en color rojo antes de entregar este documento).
- 
-Es inusual que una misma persona esté en más de un rol, incluso en proyectos chicos.
- 
-Si se considera que una persona cumple dos o más roles, entonces sólo dejarla en el rol más importante. Por ejemplo:
-
-\begin{itemize}
-\item Si una persona es Cliente pero también colabora u orienta, dejarla solo como Cliente.
-\item Si una persona es el Responsable, no debe ser colocado también como Miembro del equipo.
-\end{itemize}
-
-Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por ejemplo.
 
 \begin{table}[ht]
 %\caption{Identificación de los interesados}
@@ -185,36 +151,18 @@ Pero en cambio sí es usual que el Cliente y el Auspiciante sean el mismo, por e
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Rol           & Nombre y Apellido & Organización 	& Puesto 	\\ \hline
-Auspiciante   &                   &              	&        	\\ \hline
-Cliente       & \clientename      &\empclientename	&        	\\ \hline
-Impulsor      &                   &              	&        	\\ \hline
+Cliente       & \clientename      &\empclientename	& Jefe de Proyecto	\\ \hline
 Responsable   & \authorname       & FIUBA        	& Alumno 	\\ \hline
-Colaboradores &                   &              	&        	\\ \hline
 Orientador    & \supname	      & \pertesupname 	& Director Trabajo final \\ \hline
-Equipo        & miembro1 \newline 
-				miembro2          &              	&        	\\ \hline
-Opositores    &                   &              	&        	\\ \hline
+%Equipo        & - &              	&        	\\ \hline
 Usuario final & -                 & Skyloom Global	& Dpto. de Integración y Testing	\\ \hline
 \end{tabularx}
 \end{table}
 
-El Director suele ser uno de los Orientadores.
-
-No dejar celdas vacías; si no hay nada que poner en una celda colocar un signo ``-''.
-
-No dejar filas vacías; si no hay nada que poner en una fila entonces eliminarla.
-
-Es deseable listar a continuación las principales características de cada interesado.
- 
-Por ejemplo:
+Características de los interesados:
 \begin{itemize}
-	\item Auspiciante: es riguroso y exigente con la rendición de gastos. Tener mucho cuidado con esto.
-	\item Equipo: Juan Perez, suele pedir licencia porque tiene un familiar con una enfermedad. Planificar considerando esto.
-	\item Orientador: María Gómez va a poder ayudar mucho con la definición de los requerimientos.
+	\item Cliente: es exigente con la presentación del producto y el cumplimiento de sus requerimientos. También puede ayudar a definir los requerimientos.
 \end{itemize}
-
-\end{consigna}
-
 
 
 \section{3. Propósito del proyecto}
@@ -222,19 +170,13 @@ Por ejemplo:
 
 El propósito de este proyecto es desarrollar un dispositivo integrado capaz de proveer al usuario una forma sencilla de monitorear y comandar un EDFA, sin necesidad de usar una computadora. De esta forma el dispositivo se utilizará en dos instancias bien definidas: la primera es durante el desarrollo de nuevos modelos de terminales opticas satelitales y la segunda es durante la integración de grandes lotes para su fabricación en masa.
 
-\begin{consigna}{red}
-¿Por qué se hace el proyecto? ¿Qué se quiere lograr? 
-
-
-Se recomienda que sea solo un párrafo que empiece diciendo ``El propósito de este proyecto es...''.
-\end{consigna}
-
 \section{4. Alcance del proyecto}
 \label{sec:alcance}
 
 Este proyecto queda delimitado por:
 \begin{itemize}
-	\item Diseño y construcción de un dispositivo funcional de un tester que consta de un sistema embebido sobre un placa.
+	\item Diseño y construcción de un dispositivo funcional de un tester que consta de hardware y software.
+	\item Diseño y ensamble del PCB del dispositivo.
 	\item Integración completa del dispositivo en soporte mecánico.
 	\item Verificación funcional del producto final.
 	\item Simulación de funcionamiento de hardware mediante software apropiado.
@@ -245,21 +187,11 @@ Este proyecto queda delimitado por:
 
 Por otro lado, queda excluído del presente proyecto:
 \begin{itemize}
+	\item Fabricación del PCB del dispositivo.
 	\item Especificación de las pruebas a ejecutar sobre el amplificador óptico utilizando el dispositivo.
 	\item Procesamiento e interpretación de los valores de los parámetros enviados por el EDFA.
 	\item Diseño y construcción de la fuente de alimentación externa.
 \end{itemize}
-
-\begin{consigna}{red}
-¿Qué se incluye y que no se incluye en este proyecto?
-
-Se refiere al trabajo a hacer para entregar el producto o resultado especificado. 
-
-Explicitar todo lo quede comprendido dentro del alcance del proyecto.
-
-Explicitar además todo lo que no quede incluido (``El presente proyecto no incluye...'')
-
-\end{consigna}
 
 
 \section{5. Supuestos del proyecto}
@@ -273,12 +205,9 @@ Para el desarrollo del presente proyecto se supone que:
 	\item Se dispondrá del tiempo necesario para el desarrollo del proyecto.
 	\item Se cuenta con toda la información técnica acerca del amplificador óptico, sus parámetros y funcionamiento.
 	\item Se contará con un EDFA o con una placa electrónica que simule su comportamiento.
+	\item El contexto macroeconómico permitirá mantener al proyecto económicamente viable durante toda su duración.
+	\item El dispositivo le seguirá siendo necesario al cliente al momento de la finalización del proyecto.
 \end{itemize}
-
-\begin{consigna}{red}
-
-Por ejemplo, se podrían incluir supuestos respecto a disponibilidad de tiempo y recursos humanos y materiales, sobre la factibilidad técnica de distintos aspectos del proyecto, sobre otras cuestiones que sean necesarias para el éxito del proyecto como condiciones macroeconómicas o reglamentarias.
-\end{consigna}
 
 \section{6. Requerimientos}
 \label{sec:requerimientos}

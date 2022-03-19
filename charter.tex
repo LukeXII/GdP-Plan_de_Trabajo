@@ -228,20 +228,22 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 				\begin{enumerate}
 					\item Todas las señales eléctricas entrantes y salientes del EDFA deben estar aisladas y protegidas contra descargas electrostáticas.
 					\item El dispositivo debe poder medir el consumo de corriente del EDFA con una precisión del X\%.
+					\item El dispositivo debe contar con una pantalla táctil y mostrar en ella el estado de todas las señales del EDFA y los valores de sus parámetros.
 					\item El dispositivo debe conectarse al EDFA mediante un cable con conectores Micro-D.
 				\end{enumerate}
 			\item Requerimientos de firmware
 				\begin{enumerate}
 					\item El dispositivo debe actualizar la información mostrada en la pantalla al menos cada 0.5 segundos.
+					\item El dispositivo debe interpretar las señales analógicas de entrada, procesarlas y mostrarlas en la pantalla.
 				\end{enumerate}
 		\end{enumerate}
 	\item Requerimientos no funcionales
 		\begin{enumerate}
 			\item Se deberá generar la documenatación correspondiente.
-			\item El dispositivo no debe generar ni emanar ningún tipo de partículas o residuo.
 			\item El dispositivo debe ser apto para su uso en una sala limpia.
-			\item El dispositivo no debe generar altas temperaturas.
+			\item El dispositivo no debe generar ni emanar ningún tipo de partículas o residuo.
 			\item El dispositivo no debe emitir EMI.
+			\item El dispositivo no debe generar altas temperaturas.
 		\end{enumerate}
 	\item Requerimientos de testing
 		%\begin{enumerate}
@@ -288,6 +290,10 @@ Y al escribirlos seguir las siguientes reglas:
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
 
+Se dará una visión de las funcionalidades esperadas por los distintos usuarios del producto. A cada
+historia se le asocia un grado de ponderación de acuerdo a un criterio definido y una prioridad
+respecto al resto.
+
 \begin{consigna}{red}
 Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
 
@@ -299,55 +305,76 @@ Se debe indicar explícitamente el criterio para calcular los \textit{story poin
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
 
-\begin{consigna}{red}
-
-Los entregables del proyecto son (ejemplo):
+Se incluyen los siguientes entregables:
 
 \begin{itemize}
-	\item Manual de uso
-	\item Diagrama de circuitos esquemáticos
+	\item Manual de uso del dispositivo
+	\item Diagramas de circuitos esquemáticos
 	\item Código fuente del firmware
-	\item Diagrama de instalación
+	\item Reporte de ensayos
 	\item Informe final
-	\item etc...
+	\item Producto final funcional
+	\item Memoria del proyecto
 \end{itemize}
-
-\end{consigna}
 
 \section{9. Desglose del trabajo en tareas}
 \label{sec:wbs}
 
-\begin{consigna}{red}
+Se presenta a continuación el WBS del proyecto mediante una lista indexada, detallando las actividades a realizar en cada sección y su duración correspondiente.
+
 El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
 
 \begin{enumerate}
-\item Grupo de tareas 1
+\item Planificación del proyecto ( hs)
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Definición de alcance y requisitos ( hs)
+	\item Análisis de factibilidad ( hs)
+	\item Confección del plan de trabajo ( hs)
 	\end{enumerate}
-\item Grupo de tareas 2
+\item Análisis preliminar
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
+	\item Elección de microcontrolador ( hs)
+	\item Tarea 2 ( hs)
+	\item Tarea 3 ( hs)
 	\end{enumerate}
-\item Grupo de tareas 3
+\item Diseño general del dispositivo
 	\begin{enumerate}
-	\item Tarea 1 (tantas hs)
-	\item Tarea 2 (tantas hs)
-	\item Tarea 3 (tantas hs)
-	\item Tarea 4 (tantas hs)
-	\item Tarea 5 (tantas hs)
+	\item Construcción de diagrama en bloques (18 hs)
+	\item Definición de interfaces (14 hs)
+	\item Tarea 3 ( hs)
+	\end{enumerate}
+\item Diseño de hardware
+	\begin{enumerate}
+	\item Diseño del diagrama esquemático (30 hs)
+	\item Diseño del PCB (30 hs)
+	\item Construcción del PCB (12 hs)
+	\item Diseño de la carcasa (16 hs)
+	\item Impresión de la carcasa (10 hs)
+	\item Integración y montaje del dispositivo completo (10 hs)
+	\end{enumerate}
+\item Diseño de firmware
+	\begin{enumerate}
+	\item Definición de la arquitectura (12 hs)
+	\item Tarea 2 ( hs)
+	\item Tarea 3 ( hs)
+	\end{enumerate}
+\item Verificación y validación
+	\begin{enumerate}
+	\item Tarea 1 ( hs)
+	\item Tarea 2 ( hs)
+	\item Tarea 3 ( hs)
+	\end{enumerate}
+\item Documentación
+	\begin{enumerate}
+	\item Tarea 1 ( hs)
+	\item Tarea 2 ( hs)
+	\item Tarea 3 ( hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: (tantas hs)
+Cantidad total de horas: ( hs)
 
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs. 
-
-\end{consigna}
+Se recomienda que no haya ninguna tarea que lleve más de 40 hs.
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}

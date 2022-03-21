@@ -3,7 +3,7 @@
 codirector, % Uncomment to add a codirector to the title page
 ]{charter} 
 
-
+\usepackage{enumitem}
 
 
 % El títulos de la memoria, se usa en la carátula y se puede usar el cualquier lugar del documento con el comando \ttitle
@@ -212,27 +212,34 @@ Para el desarrollo del presente proyecto se supone que:
 \section{6. Requerimientos}
 \label{sec:requerimientos}
 
-Los requerimientos del proyecto se definieron luego de acordarlos con el cliente y considerando las sugerencias de los posibles usuarios finales. Estos se detallan a continuación, agrupados por subsistemas y en orden de prioridad decreciente.
+Los requerimientos del proyecto se definieron luego de acordarlos con el cliente y considerando las sugerencias de los posibles usuarios finales. Estos se detallan a continuación, agrupados en distintas secciones y en orden de prioridad decreciente.
 
 \begin{enumerate}
 	\item Requerimientos generales
 		\begin{enumerate}
-			\item Fecha de entrega del proyecto terminado:
+			\item Fecha de entrega del proyecto terminado: A definir
+			\item Todos los componentes del dispositivo, a excepción de la fuente de alimentación, deben estar montados sobre una carcasa de material no conductor.
+			\item El dispositivo, sin la fuente de alimentaciön externa, no debe pesar mas de 750 g y no debe tener mas de 15 cm de largo, 10 cm de ancho y 6 cm de alto.
 			\item El dispositivo debe poder conectarse a la red doméstica de 110V/60Hz.
-			\item Todos los componentes del dispositivo, a excepción de la fuente de alimentación, deben estar montados sobre una carcasa de material no conductor
-			\item El dispositivo no debe pesar mas de X kg y no debe tener mas de X cm de largo, X cm de ancho y X cm de alto.
 		\end{enumerate}
 	\item Requerimientos funcionales
 		\begin{enumerate}
 			\item Requerimientos de hardware
-				\begin{enumerate}
+				\begin{enumerate}[label*=\arabic*.]
 					\item Todas las señales eléctricas entrantes y salientes del EDFA deben estar aisladas y protegidas contra descargas electrostáticas.
-					\item El dispositivo debe poder medir el consumo de corriente del EDFA con una precisión del X\%.
 					\item El dispositivo debe contar con una pantalla táctil y mostrar en ella el estado de todas las señales del EDFA y los valores de sus parámetros.
+					\item El dispositivo debe poder medir el consumo de corriente del EDFA con una precisión del 10\%.
+					\item El dispositivo debe desconectar la alimentación del EDFA de forma automática si el consumo de corriente supera el valor establecido por el usuario. Este valor debe ser configurable por el usuario mediante la pantalla táctil.
+					\item El dispositivo debe poder medir el nivel de tensión de alimentación del EDFA con una precisión del 10\%.
+					\item El dispositivo debe desconectar la alimentación del EDFA de forma automática si el nivel de tensión cae por debajo del valor establecido por el usuario. Este valor debe ser configurable por el usuario mediante la pantalla táctil.
+					\item El dispositivo debe poder conectarse a una computadora mediante USB.
 					\item El dispositivo debe conectarse al EDFA mediante un cable con conectores Micro-D.
 				\end{enumerate}
 			\item Requerimientos de firmware
-				\begin{enumerate}
+				\begin{enumerate}[label*=\arabic*.]
+					\item El dispositivo debe utilizar un sistema operativo en tiempo real.
+					\item El dispositivo debe establecer una comunicación con el EDFA para el envío de comandos mediante una interfaz UART.
+					\item Cuando el dispositivo se encuentra conectado a una computadora el usuario debe poder, mediante una consola, configurar los mismos parámetros que en la pantalla táctil y además, establecer una comunicación directa con el EDFA.
 					\item El dispositivo debe actualizar la información mostrada en la pantalla al menos cada 0.5 segundos.
 					\item El dispositivo debe interpretar las señales analógicas de entrada, procesarlas y mostrarlas en la pantalla.
 				\end{enumerate}
@@ -246,46 +253,19 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 			\item El dispositivo no debe generar altas temperaturas.
 		\end{enumerate}
 	\item Requerimientos de testing
-		%\begin{enumerate}
-
-		%\end{enumerate}
+		\begin{enumerate}
+			\item Test de consumo de corriente del EDFA.
+			\item Test de desconexión de alimentación del EDFA por sobrecorriente.
+			\item Test de comunicación UART con EDFA.
+			\item Test de nivel de tensión de alimentación del EDFA.
+			\item Test de desconexión de alimentación del EDFA por caída de tensión.
+			\item Test de uso del dispositivo mediante una computadora.
+		\end{enumerate}
 \end{enumerate}
 
-\begin{consigna}{red}
-Los requerimientos deben numerarse y de ser posible estar agruparlos por afinidad, por ejemplo:
-
-\begin{enumerate}
-	\item Requerimientos funcionales
-		\begin{enumerate}
-			\item El sistema debe...
-			\item Tal componente debe...
-			\item El usuario debe poder...
-		\end{enumerate}
-	\item Requerimientos de documentación
-		\begin{enumerate}
-			\item Requerimiento 1
-			\item Requerimiento 2 (prioridad menor)
-		\end{enumerate}
-	\item Requerimiento de testing...
-	\item Requerimientos de la interfaz...
-	\item Requerimientos interoperabilidad...
-	\item etc...
-\end{enumerate}
-
-Leyendo los requerimientos se debe poder interpretar cómo será el proyecto y su funcionalidad.
-
-Indicar claramente cuál es la prioridad entre los distintos requerimientos y si hay requerimientos opcionales. 
-
-No olvidarse de que los requerimientos incluyen a las regulaciones y normas vigentes!!!
-
-Y al escribirlos seguir las siguientes reglas:
-\begin{itemize}
-	\item Ser breve y conciso (nadie lee cosas largas). 
-	\item Ser específico: no dejar lugar a confusiones.
-	\item Expresar los requerimientos en términos que sean cuantificables y medibles.
-\end{itemize}
-
-\end{consigna}
+% Faltaria poner los requerimientos del software de PC. Va a tener GUI? Mostraria lo mismo que la pantalla tactil?
+% Podria ser buena idea ponerlos en una nueva seccion de "Requerimientos de la iterfaz"
+% Faltaria poner los requerimientos de regulaciones y normas vigentes
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
 \label{sec:backlog}
@@ -293,6 +273,10 @@ Y al escribirlos seguir las siguientes reglas:
 Se dará una visión de las funcionalidades esperadas por los distintos usuarios del producto. A cada
 historia se le asocia un grado de ponderación de acuerdo a un criterio definido y una prioridad
 respecto al resto.
+
+Como ingeniero de desarrollo desearía poder saber el consumo de corriente del EDFA cuando está funcionando activamente sobre una señal óptica para poder calcular su eficiencia.
+
+Como técnico de integración desearía poder probar todas las señales del EDFA rápidamente sin riesgo de dañarlo para realizar una aceptación de lote en poco tiempo.
 
 \begin{consigna}{red}
 Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
@@ -312,7 +296,6 @@ Se incluyen los siguientes entregables:
 	\item Diagramas de circuitos esquemáticos
 	\item Código fuente del firmware
 	\item Reporte de ensayos
-	\item Informe final
 	\item Producto final funcional
 	\item Memoria del proyecto
 \end{itemize}
@@ -322,51 +305,53 @@ Se incluyen los siguientes entregables:
 
 Se presenta a continuación el WBS del proyecto mediante una lista indexada, detallando las actividades a realizar en cada sección y su duración correspondiente.
 
-El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
+%El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar %cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
 
 \begin{enumerate}
 \item Planificación del proyecto ( hs)
 	\begin{enumerate}
-	\item Definición de alcance y requisitos ( hs)
-	\item Análisis de factibilidad ( hs)
-	\item Confección del plan de trabajo ( hs)
+	\item Definición de alcance y requerimientos con el cliente (6 hs)
+	\item Análisis de factibilidad técnico-económica (4 hs)
+	\item Confección del plan de trabajo (18 hs)
 	\end{enumerate}
 \item Análisis preliminar
 	\begin{enumerate}
-	\item Elección de microcontrolador ( hs)
-	\item Tarea 2 ( hs)
+	\item Elección de microcontrolador (4 hs)
+	\item Definición de principales componentes a utilizar (8 hs)
 	\item Tarea 3 ( hs)
 	\end{enumerate}
 \item Diseño general del dispositivo
 	\begin{enumerate}
-	\item Construcción de diagrama en bloques (18 hs)
-	\item Definición de interfaces (14 hs)
+	\item Construcción de diagrama en bloques (12 hs)
+	\item Definición de interfaces (10 hs)
 	\item Tarea 3 ( hs)
 	\end{enumerate}
 \item Diseño de hardware
 	\begin{enumerate}
 	\item Diseño del diagrama esquemático (30 hs)
-	\item Diseño del PCB (30 hs)
-	\item Construcción del PCB (12 hs)
-	\item Diseño de la carcasa (16 hs)
-	\item Impresión de la carcasa (10 hs)
-	\item Integración y montaje del dispositivo completo (10 hs)
+	\item Diseño del PCB (28 hs)
+	\item Ensamble del PCB (10 hs)
+	\item Puesta en marcha del PCB (8 hs)
+	\item Ejecución de retrabajos del PCB (4 hs)
+	\item Diseño de la carcasa (18 hs)
+	\item Impresión de la carcasa (14 hs)
+	\item Integración y montaje del dispositivo completo (6 hs)
 	\end{enumerate}
 \item Diseño de firmware
 	\begin{enumerate}
-	\item Definición de la arquitectura (12 hs)
-	\item Tarea 2 ( hs)
+	\item Definición de la arquitectura (10 hs)
+	\item Modularización del código (16 hs)
 	\item Tarea 3 ( hs)
 	\end{enumerate}
 \item Verificación y validación
 	\begin{enumerate}
-	\item Tarea 1 ( hs)
+	\item Pruebas de campo ( hs)
 	\item Tarea 2 ( hs)
 	\item Tarea 3 ( hs)
 	\end{enumerate}
 \item Documentación
 	\begin{enumerate}
-	\item Tarea 1 ( hs)
+	\item Elaboración del manual de usuario (18 hs)
 	\item Tarea 2 ( hs)
 	\item Tarea 3 ( hs)
 	\end{enumerate}

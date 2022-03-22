@@ -219,8 +219,9 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 		\begin{enumerate}
 			\item Fecha de entrega del proyecto terminado: A definir
 			\item Todos los componentes del dispositivo, a excepción de la fuente de alimentación, deben estar montados sobre una carcasa de material no conductor.
+			\item El dispositivo debe poder conectarse a la red de 110V/60Hz mediante una fuente de alimentación externa.
 			\item El dispositivo, sin la fuente de alimentaciön externa, no debe pesar mas de 750 g y no debe tener mas de 15 cm de largo, 10 cm de ancho y 6 cm de alto.
-			\item El dispositivo debe poder conectarse a la red doméstica de 110V/60Hz.
+			\item El dispositivo debe conectarse al EDFA mediante un cable con conectores Micro-D.
 		\end{enumerate}
 	\item Requerimientos funcionales
 		\begin{enumerate}
@@ -233,7 +234,6 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 					\item El dispositivo debe poder medir el nivel de tensión de alimentación del EDFA con una precisión del 10\%.
 					\item El dispositivo debe desconectar la alimentación del EDFA de forma automática si el nivel de tensión cae por debajo del valor establecido por el usuario. Este valor debe ser configurable por el usuario mediante la pantalla táctil.
 					\item El dispositivo debe poder conectarse a una computadora mediante USB.
-					\item El dispositivo debe conectarse al EDFA mediante un cable con conectores Micro-D.
 				\end{enumerate}
 			\item Requerimientos de firmware
 				\begin{enumerate}[label*=\arabic*.]
@@ -249,7 +249,7 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 			\item Se deberá generar la documenatación correspondiente.
 			\item El dispositivo debe ser apto para su uso en una sala limpia.
 			\item El dispositivo no debe generar ni emanar ningún tipo de partículas o residuo.
-			\item El dispositivo no debe emitir EMI.
+			\item El dispositivo debe cumplir con la normativa vigente de compatibilidad electromagnética.
 			\item El dispositivo no debe generar altas temperaturas.
 		\end{enumerate}
 	\item Requerimientos de testing
@@ -261,10 +261,12 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 			\item Test de desconexión de alimentación del EDFA por caída de tensión.
 			\item Test de uso del dispositivo mediante una computadora.
 		\end{enumerate}
+	\item Requerimientos opcionales
+		\begin{enumerate}
+			\item El dispositivo podría contar con un software de PC con interfaz gráfica para el manejo de la comunicación con el EDFA y el monitoreo de señales.
+		\end{enumerate}
 \end{enumerate}
 
-% Faltaria poner los requerimientos del software de PC. Va a tener GUI? Mostraria lo mismo que la pantalla tactil?
-% Podria ser buena idea ponerlos en una nueva seccion de "Requerimientos de la iterfaz"
 % Faltaria poner los requerimientos de regulaciones y normas vigentes
 
 \section{7. Historias de usuarios (\textit{Product backlog})}
@@ -274,17 +276,37 @@ Se dará una visión de las funcionalidades esperadas por los distintos usuarios
 historia se le asocia un grado de ponderación de acuerdo a un criterio definido y una prioridad
 respecto al resto.
 
-Como ingeniero de desarrollo desearía poder saber el consumo de corriente del EDFA cuando está funcionando activamente sobre una señal óptica para poder calcular su eficiencia.
 
-Como técnico de integración desearía poder probar todas las señales del EDFA rápidamente sin riesgo de dañarlo para realizar una aceptación de lote en poco tiempo.
+Para la ponderación se usarán tres niveles: 1, 3 y 7. 
+Para la prioridad se usará de 1 a 5, siendo 1 la prioridad mas baja.
 
-\begin{consigna}{red}
-Descripción: En esta sección se deben incluir las historias de usuarios y su ponderación (\textit{history points}). Recordar que las historias de usuarios son descripciones cortas y simples de una característica contada desde la perspectiva de la persona que desea la nueva capacidad, generalmente un usuario o cliente del sistema. La ponderación es un número entero que representa el tamaño de la historia comparada con otras historias de similar tipo.
-
-El formato propuesto es: "como [rol] quiero [tal cosa] para [tal otra cosa]."
-
-Se debe indicar explícitamente el criterio para calcular los \textit{story points} de cada historia
-\end{consigna}
+\begin{enumerate}
+	\item Como ingeniero de desarrollo desearía poder saber el consumo de corriente del EDFA cuando está funcionando activamente sobre una señal óptica para poder calcular su eficiencia.
+	\begin{itemize}
+		\item Ponderación: 7
+		\item Prioridad: 3
+	\end{itemize}
+	\item Como técnico de integración desearía poder probar todas las señales del EDFA rápidamente para realizar una aceptación de lote en poco tiempo.
+	\begin{itemize}
+		\item Ponderación: 7
+		\item Prioridad: 5
+	\end{itemize}
+	\item Como ingeniero de desarrollo desearía poder contar con un dispositivo integrado que indique todos los parámetros internos del EDFA para poder monitorear su performance, sin necesidad de usar una computeadora u otro instrumento.
+	\begin{itemize}
+		\item Ponderación: 3
+		\item Prioridad: 4
+	\end{itemize}
+	\item Como técnico de integración desearía poder enviarle comandos al EDFA para simular que se encuentra conectado a un dispositivo que lo controla, y asi observar su comportamiento.
+	\begin{itemize}
+		\item Ponderación: 1
+		\item Prioridad: 2
+	\end{itemize}
+	\item Como ingeniero de desarrollo desearía que el dispositivo cuente con las medidas de protección necesarias tanto como para evitar dañar equipos de vuelo como para poder utilizarlo dentro de una sala limpia.
+	\begin{itemize}
+		\item Ponderación: 3
+		\item Prioridad: 2
+	\end{itemize}
+\end{enumerate}
 
 \section{8. Entregables principales del proyecto}
 \label{sec:entregables}
@@ -305,61 +327,67 @@ Se incluyen los siguientes entregables:
 
 Se presenta a continuación el WBS del proyecto mediante una lista indexada, detallando las actividades a realizar en cada sección y su duración correspondiente.
 
-%El WBS debe tener relación directa o indirecta con los requerimientos.  Son todas las actividades que se harán en el proyecto para dar %cumplimiento a los requerimientos. Se recomienda mostrar el WBS mediante una lista indexada:
-
 \begin{enumerate}
-\item Planificación del proyecto ( hs)
+\item Planificación del proyecto (50 hs)
 	\begin{enumerate}
-	\item Definición de alcance y requerimientos con el cliente (6 hs)
-	\item Análisis de factibilidad técnico-económica (4 hs)
-	\item Confección del plan de trabajo (18 hs)
+	\item Definición de alcance y requerimientos con el cliente (12 hs)
+	\item Análisis de factibilidad técnico-económica (8 hs)
+	\item Confección del plan de trabajo (30 hs)
 	\end{enumerate}
-\item Análisis preliminar
+\item Análisis preliminar (32 hs)
 	\begin{enumerate}
-	\item Elección de microcontrolador (4 hs)
-	\item Definición de principales componentes a utilizar (8 hs)
-	\item Tarea 3 ( hs)
+	\item Estudio detallado del funcionamiento del EDFA (12 hs)
+	\item Elección del microcontrolador (8 hs)
+	\item Selección de los principales componentes a utilizar (12 hs)
 	\end{enumerate}
-\item Diseño general del dispositivo
+\item Diseño general del dispositivo (50 hs)
 	\begin{enumerate}
 	\item Construcción de diagrama en bloques (12 hs)
-	\item Definición de interfaces (10 hs)
-	\item Tarea 3 ( hs)
+	\item Definición de interfaces (6 hs)
+	\item Diseño y fabricación de placa de desarrollo (32 hs)
 	\end{enumerate}
-\item Diseño de hardware
+\item Diseño de hardware (122 hs)
 	\begin{enumerate}
 	\item Diseño del diagrama esquemático (30 hs)
-	\item Diseño del PCB (28 hs)
-	\item Ensamble del PCB (10 hs)
-	\item Puesta en marcha del PCB (8 hs)
-	\item Ejecución de retrabajos del PCB (4 hs)
-	\item Diseño de la carcasa (18 hs)
-	\item Impresión de la carcasa (14 hs)
+	\item Diseño del PCB (24 hs)
+	\item Ensamble del PCB (12 hs)
+	\item Puesta en marcha del PCB (12 hs)
+	\item Ejecución de retrabajos del PCB (6 hs)
+	\item Diseño de la carcasa (20 hs)
+	\item Impresión de la carcasa (12 hs)
 	\item Integración y montaje del dispositivo completo (6 hs)
 	\end{enumerate}
-\item Diseño de firmware
+\item Diseño de firmware (140 hs)
 	\begin{enumerate}
-	\item Definición de la arquitectura (10 hs)
-	\item Modularización del código (16 hs)
-	\item Tarea 3 ( hs)
+	\item Definición de la arquitectura (14 hs)
+	\item Modularización del código (20 hs)
+	\item Desarrollo de la interfaz de usuario en pantalla táctil (30 hs)
+	\item Desarrollo del monitoreo y protección de corriente (10 hs)
+	\item Desarrollo del monitoreo y protección de tensión (10 hs)
+	\item Desarrollo de la interfaz UART (26 hs)
+	\item Desarrollo de la interfaz USB (30 hs)
 	\end{enumerate}
-\item Verificación y validación
+\item Verificación y validación (146 hs)
 	\begin{enumerate}
-	\item Pruebas de campo ( hs)
-	\item Tarea 2 ( hs)
-	\item Tarea 3 ( hs)
+	\item Pruebas de campo (32 hs)
+	\item Pruebas de la interfaz de usuario (14 hs)
+	\item Pruebas del monitor de corriente (10 hs)
+	\item Pruebas de la protección de corriente (10 hs)
+	\item Pruebas del monitor de tensión (10 hs)
+	\item Pruebas de la protección de tensión (10 hs)
+	\item Pruebas de la interfaz UART (20 hs)
+	\item Pruebas de la interfaz USB (20 hs)
+	\item Corrección de errores del firmware (20 hs)
 	\end{enumerate}
-\item Documentación
+\item Documentación (102 hs)
 	\begin{enumerate}
-	\item Elaboración del manual de usuario (18 hs)
-	\item Tarea 2 ( hs)
-	\item Tarea 3 ( hs)
+	\item Elaboración del manual de usuario (32 hs)
+	\item Elaboración de la memoria técnica (40 hs)
+	\item Elaboración de la presentación pública del proyecto (30 hs)
 	\end{enumerate}
 \end{enumerate}
 
-Cantidad total de horas: ( hs)
-
-Se recomienda que no haya ninguna tarea que lleve más de 40 hs.
+Cantidad total de horas: (642 hs)
 
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
@@ -373,7 +401,7 @@ Armar el AoN a partir del WBS definido en la etapa anterior.
 
 \end{consigna}
 
-\begin{figure}[htpb]
+\begin{figure}[H]
 \centering 
 \includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
 \caption{Diagrama en \textit{Activity on Node}}

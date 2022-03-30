@@ -40,7 +40,7 @@ codirector, % Uncomment to add a codirector to the title page
  
 \fechaINICIO{1 de Marzo de 2022}		%Fecha de inicio de la cursada de GdP \fechaInicioName
 \fechaFINALPlan{18 de junio de 2022} 		%Fecha de final de cursada de GdP
-\fechaFINALTrabajo{15 de mayo de 2022}	%Fecha de defensa pública del trabajo final
+\fechaFINALTrabajo{13 de Marzo de 2023}	%Fecha de defensa pública del trabajo final
 
 
 \begin{document}
@@ -68,10 +68,10 @@ codirector, % Uncomment to add a codirector to the title page
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios realizados} & Fecha      \\ \hline
-1.0	& Creación del documento.						& 01/03/2022 \\ \hline
-1.1	& Se completan las secciones 1 a 5 inclusive			& 15/03/2022 \\ \hline
+1.0	& Creación del documento.				& 01/03/2022 \\ \hline
+1.1	& Se completan las secciones 1 a 5 inclusive		& 15/03/2022 \\ \hline
 1.2	& Se completan las secciones 6 a 9 inclusive                & 22/03/2022 \\ \hline
-%2      & Se completa hasta el punto 7 inclusive
+1.3     & Se completan las secciones 10 a 12 inclusive		& 29/03/2022 \\ \hline
 %		  Se puede agregar algo más \newline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
@@ -93,7 +93,7 @@ Buenos Aires, \fechaInicioName
 
 \vspace{2cm}
 
-Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el desarrollo y construcción de un dispositivo integrado capaz de monitorear y controlar un amplificador de fibra óptica, y tendrá un presupuesto preliminar estimado de \textcolor{red}{600} hs de trabajo y \textcolor{red}{\$XXX}, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
+Por medio de la presente se acuerda con el Ing. \authorname\hspace{1px} que su Trabajo Final de la \degreename\hspace{1px} se titulará ``\ttitle'', consistirá esencialmente en el desarrollo y construcción de un dispositivo integrado capaz de monitorear y controlar un amplificador de fibra óptica, y tendrá un presupuesto preliminar estimado de 642 hs de trabajo y US\$ 732, con fecha de inicio \fechaInicioName\hspace{1px} y fecha de presentación pública \fechaFinalName.
 
 Se adjunta a esta acta la planificación inicial.
 
@@ -273,7 +273,7 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 \label{sec:backlog}
 
 Se dará una visión de las funcionalidades esperadas por los distintos usuarios del producto. A cada
-historia se le asocia un grado de ponderación de acuerdo a un criterio definido y una prioridad
+historia se le asocia un grado de ponderación de acuerdo al nivel de importancia de la característica mencionada y una prioridad
 respecto al resto.
 
 
@@ -392,99 +392,42 @@ Cantidad total de horas: (642 hs)
 \section{10. Diagrama de Activity On Node}
 \label{sec:AoN}
 
-\begin{consigna}{red}
-Armar el AoN a partir del WBS definido en la etapa anterior. 
+A continuación se presenta el diagrama de actividades Activity On Node. La duración de las tareas se encuentran expresadas en horas y el camino crítico del proyecto indicado mediante las flechas de mayor espesor.
 
-%La figura \ref{fig:AoN} fue elaborada con el paquete latex tikz y pueden consultar la siguiente referencia \textit{online}:
-
-%\url{https://www.overleaf.com/learn/latex/LaTeX_Graphics_using_TikZ:_A_Tutorial_for_Beginners_(Part_3)\%E2\%80\%94Creating_Flowcharts}
-
-\end{consigna}
+Para mayor claridad del diagrama, las tareas 5, 6 y 7 se encuentran reducidas en una sola instancia ya que sus actividades de menor nivel se ejecutan de forma secuencial.
 
 \begin{figure}[H]
 \centering 
-\includegraphics[width=.8\textwidth]{./Figuras/AoN.png}
-\caption{Diagrama en \textit{Activity on Node}}
+\includegraphics[width=.9\textwidth]{./Figuras/AoN.png}
+\caption{Diagrama de \textit{Activity on Node}}
 \label{fig:AoN}
 \end{figure}
-
-Indicar claramente en qué unidades están expresados los tiempos.
-De ser necesario indicar los caminos semicríticos y analizar sus tiempos mediante un cuadro.
-Es recomendable usar colores y un cuadro indicativo describiendo qué representa cada color, como se muestra en el siguiente ejemplo:
-
-
 
 \section{11. Diagrama de Gantt}
 \label{sec:gantt}
 
-\begin{consigna}{red}
+En la figura 3 se muestran las tareas con sus respectivas fechas iniciales y finales. Para la duración de los días se estimó una jornada de trabajo de 9 horas por semana (de 5 días hábiles).
 
-Existen muchos programas y recursos \textit{online} para hacer diagramas de gantt, entre los cuales destacamos:
-
-\begin{itemize}
-\item Planner
-\item GanttProject
-\item Trello + \textit{plugins}. En el siguiente link hay un tutorial oficial: \\ \url{https://blog.trello.com/es/diagrama-de-gantt-de-un-proyecto}
-\item Creately, herramienta online colaborativa. \\\url{https://creately.com/diagram/example/ieb3p3ml/LaTeX}
-\item Se puede hacer en latex con el paquete \textit{pgfgantt}\\ \url{http://ctan.dcc.uchile.cl/graphics/pgf/contrib/pgfgantt/pgfgantt.pdf}
-\end{itemize}
-
-Pegar acá una captura de pantalla del diagrama de Gantt, cuidando que la letra sea suficientemente grande como para ser legible. 
-Si el diagrama queda demasiado ancho, se puede pegar primero la ``tabla'' del Gantt y luego pegar la parte del diagrama de barras del diagrama de Gantt.
-
-Configurar el software para que en la parte de la tabla muestre los códigos del EDT (WBS).\\
-Configurar el software para que al lado de cada barra muestre el nombre de cada tarea.\\
-Revisar que la fecha de finalización coincida con lo indicado en el Acta Constitutiva.
-
-En la figura \ref{fig:gantt}, se muestra un ejemplo de diagrama de gantt realizado con el paquete de \textit{pgfgantt}. En la plantilla pueden ver el código que lo genera y usarlo de base para construir el propio.
-
-\begin{figure}[htbp]
-\begin{center}
-\begin{ganttchart}{1}{12}
-  \gantttitle{2020}{12} \\
-  \gantttitlelist{1,...,12}{1} \\
-  \ganttgroup{Group 1}{1}{7} \\
-  \ganttbar{Task 1}{1}{2} \\
-  \ganttlinkedbar{Task 2}{3}{7} \ganttnewline
-  \ganttmilestone{Milestone o hito}{7} \ganttnewline
-  \ganttbar{Final Task}{8}{12}
-  \ganttlink{elem2}{elem3}
-  \ganttlink{elem3}{elem4}
-\end{ganttchart}
-\end{center}
-\caption{Diagrama de gantt de ejemplo}
-\label{fig:gantt}
+\begin{figure}[H]
+\centering 
+\includegraphics[width=.85\textwidth]{./Figuras/Gantt_Tareas.png}
+\caption{Diagrama de \textit{Tareas del diagrama de Gantt}}
+\label{fig:Gantt_Tareas}
 \end{figure}
 
-
-\begin{landscape}
 \begin{figure}[htpb]
 \centering 
-\includegraphics[height=.85\textheight]{./Figuras/Gantt-2.png}
-\caption{Ejemplo de diagrama de Gantt rotado}
-\label{fig:diagGantt}
+\includegraphics[height=.7\textheight]{./Figuras/Gantt_Diag.png}
+\caption{Diagrama de Gantt}
+\label{fig:Gantt_Diag}
 \end{figure}
-
-\end{landscape}
-
-\end{consigna}
-
 
 \section{12. Presupuesto detallado del proyecto}
 \label{sec:presupuesto}
 
-\begin{consigna}{red}
-Si el proyecto es complejo entonces separarlo en partes:
-\begin{itemize}
-	\item Un total global, indicando el subtotal acumulado por cada una de las áreas.
-	\item El desglose detallado del subtotal de cada una de las áreas.
-\end{itemize}
+A continuación se muestra una tabla detallando los costos que surgen del desarrollo del proyecto. Los valores se encuentran expresados en dólares estadounidenses.
 
-IMPORTANTE: No olvidarse de considerar los COSTOS INDIRECTOS.
-
-\end{consigna}
-
-\begin{table}[htpb]
+\begin{table}[H]
 \centering
 \begin{tabularx}{\linewidth}{@{}|X|c|r|r|@{}}
 \hline
@@ -496,39 +439,39 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 Fabricación de PCB de placa de desarrollo &
-  \multicolumn{1}{c|}{a} &
-  \multicolumn{1}{c|}{b} &
-  \multicolumn{1}{c|}{c} \\ \hline
+  \multicolumn{1}{c|}{5} &
+  \multicolumn{1}{c|}{\$25*} &
+  \multicolumn{1}{c|}{\$125} \\ \hline
 Placa de desarrollo STM32F429 &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$25} &
+  \multicolumn{1}{c|}{\$25} \\ \hline
 Display LCD &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$9} &
+  \multicolumn{1}{c|}{\$9} \\ \hline
 Fuente de alimentación externa &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-Componentes electrónicos varios &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$30*} &
+  \multicolumn{1}{c|}{\$30} \\ \hline
+Componentes electrónicos varios** &
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$170*} &
+  \multicolumn{1}{c|}{\$170} \\ \hline
 Filamento PLA &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$22} &
+  \multicolumn{1}{c|}{\$22} \\ \hline
 Fabricación de PCB de dispositivo terminado &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{5} &
+  \multicolumn{1}{c|}{\$25*} &
+  \multicolumn{1}{c|}{\$125} \\ \hline
 Componentes cable dispositivo a EDFA &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$86*} &
+  \multicolumn{1}{c|}{\$86} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$592} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
 \multicolumn{4}{|c|}{\cellcolor[HTML]{C0C0C0}COSTOS INDIRECTOS} \\ \hline
 \rowcolor[HTML]{C0C0C0} 
@@ -537,40 +480,31 @@ Descripción &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor unitario} &
   \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Valor total} \\ \hline
 Gastos de importación y aduana &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{2} &
+  \multicolumn{1}{c|}{\$20*} &
+  \multicolumn{1}{c|}{\$40} \\ \hline
 Consumo de red eléctrica &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} &
-  \multicolumn{1}{c|}{} \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
-\multicolumn{1}{|l|}{} &
-   &
-   &
-   \\ \hline
+  \multicolumn{1}{c|}{1} &
+  \multicolumn{1}{c|}{\$100*} &
+  \multicolumn{1}{c|}{\$100} \\ \hline
 \multicolumn{3}{|c|}{SUBTOTAL} &
-  \multicolumn{1}{c|}{} \\ \hline
+  \multicolumn{1}{c|}{\$140} \\ \hline
 \rowcolor[HTML]{C0C0C0}
 \multicolumn{3}{|c|}{TOTAL} &
+ \multicolumn{1}{|c|}{\$732}
    \\ \hline
-\end{tabularx}%
+\end{tabularx}
 \end{table}
 
+(*) Valor aproximado
+
+(**) Incluye repuestos
 
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
 \begin{consigna}{red}
 a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
- 
 Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
 \begin{itemize}
 	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\

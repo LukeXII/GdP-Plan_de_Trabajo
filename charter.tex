@@ -503,28 +503,47 @@ Consumo de red eléctrica &
 \section{13. Gestión de riesgos}
 \label{sec:riesgos}
 
-\begin{consigna}{red}
-a) Identificación de los riesgos (al menos cinco) y estimación de sus consecuencias:
-Riesgo 1: detallar el riesgo (riesgo es algo que si ocurre altera los planes previstos de forma negativa)
-\begin{itemize}
-	\item Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de severidad (S).
-	\item Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).\\
-	Justificar el motivo por el cual se asigna determinado número de (O). 
-\end{itemize}   
+A continuación se detallan cinco posibles riesgos inherentes al proyecto. Los mismos son
+evaluados según su grado de severidad y su probabilidad de ocurrencia tomando valores del
+1 al 10.
 
-Riesgo 2:
+a) Identificación de los riesgos y estimación de sus consecuencias:
+
+Riesgo 1: Pérdida de información
+\begin{itemize}
+	\item Severidad (S): 8 \\
+	Ya sea por desperfectos, extravío o por robo de las computadoras utilizadas para desarrollo de firmware y hardware, se podría perder parcial o totalmente la información relacionada al proyecto por lo que llevaría tiempo volver a generarla o recuperarla. Además probablemente implicaría gastos extras no contemplados.
+	\item Probabilidad de ocurrencia (O): 2 \\
+	Poco probable si se usa un sistema de control de versiones basado en la nube.
+\end{itemize}
+
+Riesgo 2: Incorrecto diseño de la placa de desarrollo
+\begin{itemize}
+	\item Severidad (S): 7
+	El circuito de la placa de desarrollo puede estar mal diseñado y no funcionar e incluso dañar componentes. En el caso que esto no se pueda solucionar con un retrabajo se debería hacer una revisión del diseño y volver a fabricar y ensamblar el PCB.
+	\item Ocurrencia (O): 4
+	Al ser un circuito casi todo completamente digital y sin diseños analógicos complejos es poco probable que se tenga que hacer una modificación en el diseño que amerite volver a fabricar la placa. Lo que si es probable, es que se tenga que ejecutar algún simple retrabajo sobre ella.
+\end{itemize}
+
+Riesgo 3: Mala integridad de señal de las señales analógicas
+\begin{itemize}
+	\item Severidad (S): 9
+	En el mejor de los casos las señales analógicas que entrarán al ADC del microcontrolador estarán contaminadas por un bajo nivel de ruido. En el peor de los casos, habrá \textit{crosstalk} con las señales de clock de los SPI.
+	\item Ocurrencia (O): 5
+	En todo PCB siempre existirá un mínimo nivel de ruido debido a distintos factores como ruido térmico, ambiental o \textit{ripple} proveniente de la fuente de alimentación.
+\end{itemize}
+
+Riesgo 4: 
 \begin{itemize}
 	\item Severidad (S): 
 	\item Ocurrencia (O):
 \end{itemize}
 
-Riesgo 3:
+Riesgo 5:
 \begin{itemize}
 	\item Severidad (S): 
 	\item Ocurrencia (O):
 \end{itemize}
-
 
 b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 
@@ -534,13 +553,15 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 \hline
 \rowcolor[HTML]{C0C0C0} 
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+Pérdida de información	& 8 & 2 & 16 &    &    &      \\ \hline
+Incorrecto diseño de la placa de desarrollo	& 7 & 4 & 28 &    &    &      \\ \hline
+Mala integridad de señal de las señales analógicas	& 9 & 5 & 45 &    &    &      \\ \hline
        &   &   &     &    &    &      \\ \hline
        &   &   &     &    &    &      \\ \hline
 \end{tabularx}%
 \end{table}
+
+--------- si ambas señales no se encuentran correctamente aisladas en el PCB
 
 Criterio adoptado: 
 Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
@@ -559,8 +580,6 @@ Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de
 Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
  
 Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-
-\end{consigna}
 
 
 \section{14. Gestión de la calidad}

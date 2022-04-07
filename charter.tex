@@ -72,7 +72,7 @@ Revisión & \multicolumn{1}{c|}{\cellcolor[HTML]{C0C0C0}Detalles de los cambios 
 1.1	& Se completan las secciones 1 a 5 inclusive		& 15/03/2022 \\ \hline
 1.2	& Se completan las secciones 6 a 9 inclusive                & 22/03/2022 \\ \hline
 1.3     & Se completan las secciones 10 a 12 inclusive		& 29/03/2022 \\ \hline
-%		  Se puede agregar algo más \newline
+1.4	& Se completan las secciones 13 a 15 inclusive		& 05/04/2022 \\ \hline
 %		  En distintas líneas \newline
 %		  Así                                                    & dd/mm/aaaa \\ \hline
 %3      & Se completa hasta el punto 11 inclusive                & dd/mm/aaaa \\ \hline
@@ -217,8 +217,8 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 \begin{enumerate}
 	\item Requerimientos generales
 		\begin{enumerate}
-			\item Todos los entregables del proyecto deben estar terminados y listos para presentarse el día TBD.
-			\item Todos los componentes del dispositivo, a excepción de la fuente de alimentación, deben estar montados sobre una carcasa de material no conductor.
+			\item Todos los entregables del proyecto deben estar terminados y listos para presentarse el día 13 de Marzo de 2023.
+			\item Todos los componentes del dispositivo, a excepción de la fuente de alimentación, deben estar montados sobre una misma carcasa de material no conductor.
 			\item El dispositivo debe poder conectarse a la red de 110V/60Hz mediante una fuente de alimentación externa.
 			\item El dispositivo, sin la fuente de alimentaciön externa, no debe pesar mas de 750 g y no debe tener mas de 15 cm de largo, 10 cm de ancho y 6 cm de alto.
 			\item El dispositivo debe conectarse al EDFA mediante un cable con conectores Micro-D.
@@ -513,41 +513,47 @@ Riesgo 1: Pérdida de información
 \begin{itemize}
 	\item Severidad (S): 8 \\
 	Ya sea por desperfectos, extravío o por robo de las computadoras utilizadas para desarrollo de firmware y hardware, se podría perder parcial o totalmente la información relacionada al proyecto por lo que llevaría tiempo volver a generarla o recuperarla. Además probablemente implicaría gastos extras no contemplados.
-	\item Probabilidad de ocurrencia (O): 2 \\
+	\item Ocurrencia (O): 2 \\
 	Poco probable si se usa un sistema de control de versiones basado en la nube.
 \end{itemize}
 
 Riesgo 2: Incorrecto diseño de la placa de desarrollo
 \begin{itemize}
-	\item Severidad (S): 7
+	\item Severidad (S): 7 \\
 	El circuito de la placa de desarrollo puede estar mal diseñado y no funcionar e incluso dañar componentes. En el caso que esto no se pueda solucionar con un retrabajo se debería hacer una revisión del diseño y volver a fabricar y ensamblar el PCB.
-	\item Ocurrencia (O): 4
+	\item Ocurrencia (O): 4 \\
 	Al ser un circuito casi todo completamente digital y sin diseños analógicos complejos es poco probable que se tenga que hacer una modificación en el diseño que amerite volver a fabricar la placa. Lo que si es probable, es que se tenga que ejecutar algún simple retrabajo sobre ella.
 \end{itemize}
 
 Riesgo 3: Mala integridad de señal de las señales analógicas
 \begin{itemize}
-	\item Severidad (S): 9
+	\item Severidad (S): 9 \\
 	En el mejor de los casos las señales analógicas que entrarán al ADC del microcontrolador estarán contaminadas por un bajo nivel de ruido. En el peor de los casos, habrá \textit{crosstalk} con las señales de clock de los SPI.
-	\item Ocurrencia (O): 5
+	\item Ocurrencia (O): 5 \\
 	En todo PCB siempre existirá un mínimo nivel de ruido debido a distintos factores como ruido térmico, ambiental o \textit{ripple} proveniente de la fuente de alimentación.
 \end{itemize}
 
-Riesgo 4: 
+Riesgo 4: Baja o nula disponibilidad de amplificadores EDFA
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+	\item Severidad (S): 8 \\
+	Para la validación de los requerimientos se deberá utilizar exactamente el modelo de EDFA que estará integrado en la terminal, por lo que se necesitará contar con uno durante todo el tiempo de duración de esta etapa.
+	\item Ocurrencia (O): 6 \\
+	Al momento de realizar la validación de los requerimientos puede suceder que la empresa se encuentre utilizando todos ellos ya sea para desarrollo o para integración y no cuente con ninguno disponible para otro uso.
 \end{itemize}
 
-Riesgo 5:
+Riesgo 5: Faltante de componentes electrónicos
 \begin{itemize}
-	\item Severidad (S): 
-	\item Ocurrencia (O):
+	\item Severidad (S): 6 \\
+	En este caso en particular la mayoría de los componentes no son de aplicaciones específicas por lo que si no se pudiese conseguir alguno, probablemente se podrán encontrar reemplazos fácilmente.
+	\item Ocurrencia (O): 6 \\
+	Es de esperar que se encuentren dificultades para conseguir ciertos componentes, ya sea por el desabastecimiento del mercado, por extravío o por rotura.
 \end{itemize}
 
-b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
+b) Tabla de gestión de riesgos:
 
-\begin{table}[htpb]
+El RPN se calcula como RPN = S x O.
+
+\begin{table}[H]
 \centering
 \begin{tabularx}{\linewidth}{@{}|X|c|c|c|c|c|c|@{}}
 \hline
@@ -555,68 +561,211 @@ b) Tabla de gestión de riesgos:      (El RPN se calcula como RPN=SxO)
 Riesgo & S & O & RPN & S* & O* & RPN* \\ \hline
 Pérdida de información	& 8 & 2 & 16 &    &    &      \\ \hline
 Incorrecto diseño de la placa de desarrollo	& 7 & 4 & 28 &    &    &      \\ \hline
-Mala integridad de señal de las señales analógicas	& 9 & 5 & 45 &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
-       &   &   &     &    &    &      \\ \hline
+Mala integridad de señal de las señales analógicas	& 9 & 5 & \color{red}45 & 6 & 3 & 18     \\ \hline
+Baja o nula disponibilidad de amplificadores EDFA	& 8 & 6 & \color{red}48 & 8 & 3 & 24	\\ \hline
+Faltante de componentes electrónicos	& 6 & 6 & \color{red}36 & 6 & 4 & 24	\\ \hline
 \end{tabularx}%
 \end{table}
 
---------- si ambas señales no se encuentran correctamente aisladas en el PCB
-
 Criterio adoptado: 
-Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a...
+Se tomarán medidas de mitigación en los riesgos cuyos números de RPN sean mayores a 30.
 
 Nota: los valores marcados con (*) en la tabla corresponden luego de haber aplicado la mitigación.
 
 c) Plan de mitigación de los riesgos que originalmente excedían el RPN máximo establecido:
- 
-Riesgo 1: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
-  Nueva asignación de S y O, con su respectiva justificación:
-  - Severidad (S): mientras más severo, más alto es el número (usar números del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de severidad (S).
-  - Probabilidad de ocurrencia (O): mientras más probable, más alto es el número (usar del 1 al 10).
-          Justificar el motivo por el cual se asigna determinado número de (O).
 
-Riesgo 2: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
- 
-Riesgo 3: plan de mitigación (si por el RPN fuera necesario elaborar un plan de mitigación).
+Riesgo 3: Mala integridad de señal de las señales analógicas
+\begin{itemize}
+	\item Severidad (S): 6 \\
+	Se incluirán filtros analógicos en el diseño del esquemático y digitales en el diseño del firmware.
+	\item Ocurrencia (O): 3 \\
+	Durante el diseño del PCB se aplicarán técnicas de desacople entre las señales analógicas y digitales con el fin de evitar la aparición de \textit{crosstalk}. Además se incluirá \textit{shielding} para mitigar el ruido inducido del ambiente.
+\end{itemize}
 
+Riesgo 4: Baja o nula disponibilidad de amplificadores EDFA
+\begin{itemize}
+	\item Severidad (S): Se mantiene.
+	\item Ocurrencia (O): 3 \\
+	Se avisará a la empresa con varias semanas de anticipación que se deberá disponer de un amplificador EDFA durante el período de tiempo correspondiente a la verificación y validación.
+\end{itemize}
+
+Riesgo 5: Faltante de componentes electrónicos
+\begin{itemize}
+	\item Severidad (S): Se mantiene
+	\item Ocurrencia (O): 4 \\
+	Se elegirán componentes con abundante stock y se adquirirán lo mas pronto posible, luego de finalizar el diseño esquemático de la placa. Además se comprarán varios repuestos para cada uno.
+\end{itemize}
 
 \section{14. Gestión de la calidad}
 \label{sec:calidad}
 
-\begin{consigna}{red}
-Para cada uno de los requerimientos del proyecto indique:
-\begin{itemize} 
-\item Req \#1: copiar acá el requerimiento.
+\begin{enumerate}
 
+\item Requerimientos generales:
+\begin{enumerate}
+\item Todos los entregables del proyecto deben estar terminados y listos para presentarse el día 13 de Marzo de 2023.
 \begin{itemize}
-	\item Verificación para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente. Detallar 
-	\item Validación con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido. Detallar  
+	\item \textbf{Verificación:} se verifica con el diagrama de Gantt.
+	\item \textbf{Validación:} el cliente compara la fecha en que recibe los entregables con la especificada en el Plan de Trabajo.
 \end{itemize}
 
+\item Todos los componentes del dispositivo, a excepción de la fuente de alimentación, deben estar montados sobre una misma carcasa de material no conductor.
+\begin{itemize}
+	\item \textbf{Verificación:} no hay componentes fuera de la carcasa, a excepción de la fuente de alimentación.
+	\item \textbf{Validación:} el cliente recibe el dispositivo y la fuente de alimentación.
 \end{itemize}
+
+\item El dispositivo debe poder conectarse a la red de 110V/60Hz mediante una fuente de alimentación externa.
+\begin{itemize}
+	\item \textbf{Verificación:} se verifica que el dispositivo tenga el conector apropiado para la fuente externa y que funcione correctamente con el nivel de tensión de salida de dicha fuente.
+	\item \textbf{Validación:} el cliente verificará que el dispositivo funcione correctamente cuando se lo conecta a la red mediante la fuente externa.
+\end{itemize}
+
+\item El dispositivo, sin la fuente de alimentaciön externa, no debe pesar mas de 750 g y no debe tener mas de 15 cm de largo, 10 cm de ancho y 6 cm de alto.
+\begin{itemize}
+	\item \textbf{Verificación:} se pesará y medirá el dispositivo.
+	\item \textbf{Validación:} el cliente pesará y medirá el dispositivo.
+\end{itemize}
+
+\item El dispositivo debe conectarse al EDFA mediante un cable con conectores Micro-D.
+\begin{itemize}
+	\item \textbf{Verificación:} se verificará que el conector en el dispositivo sea compatible con el del cable.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA mediante el cable correspondiente y verificará su funcionamiento.
+\end{itemize}
+\end{enumerate}
+
+\item Requerimientos funcionales:
+\begin{enumerate}
+\item Requerimientos de hardware
+\begin{enumerate}[label*=\arabic*.]
+\item Todas las señales eléctricas entrantes y salientes del EDFA deben estar aisladas y protegidas contra descargas electrostáticas.
+\begin{itemize}
+	\item \textbf{Verificación:} se aplicarán altas tensiones simulando ser descargas electrostáticas en los pines, se medirá si estas se suprimen y se comprobará si algún componente se dañó.
+	\item \textbf{Validación:} el cliente evaluará los resultados obtenidos en la verificación.
+\end{itemize}
+
+\item El dispositivo debe contar con una pantalla táctil y mostrar en ella el estado de todas las señales del EDFA y los valores de sus parámetros.
+\begin{itemize}
+	\item \textbf{Verificación:} se comprueba que cuando los parámetros y señales de interes varían estos se actualizan correctamente en la pantalla.
+	\item \textbf{Validación:} el cliente comprobará que en la pantalla se muestran todos los parámetros y señales de interés.
+\end{itemize}
+
+\item El dispositivo debe poder medir el consumo de corriente del EDFA con una precisión del 10\%.
+\begin{itemize}
+	\item \textbf{Verificación:} se colocará una carga conocida simulando el consumo de corriente del EDFA y se comprobará que el valor de corriente medido tiene un desvío máximo del 10\% con respecto al real.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA, medirá el consumo de corriente y lo comparará con el valor mostrado en la pantalla del dispositivo.
+\end{itemize}
+
+\item El dispositivo debe desconectar la alimentación del EDFA de forma automática si el consumo de corriente supera el valor establecido por el usuario. Este valor debe ser configurable por el usuario mediante la pantalla táctil.
+\begin{itemize}
+	\item \textbf{Verificación:} se colocará una carga conocida simulando el consumo de corriente del EDFA y se comprobará que el dispositivo desconecta la alimentación cuando la corriente supera el limite establecido mediante la pantalla táctil.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA y midiendo la corriente que consume comprobará que el dispositivo desconecta la alimentación cuando esta supera el limite establecido mediante la pantalla táctil.
+\end{itemize}
+
+\item El dispositivo debe poder medir el nivel de tensión de alimentación del EDFA con una precisión del 10\%.
+\begin{itemize}
+	\item \textbf{Verificación:} se colocará una carga conocida simulando el consumo de corriente del EDFA y se comprobará que el valor de tensión medido tiene un desvío máximo del 10\% con respecto al real.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA, medirá el nivel de tensión y lo comparará con el valor mostrado en la pantalla del dispositivo.
+\end{itemize}
+
+\item El dispositivo debe desconectar la alimentación del EDFA de forma automática si el nivel de tensión cae por debajo del valor establecido por el usuario. Este valor debe ser configurable por el usuario mediante la pantalla táctil.
+\begin{itemize}
+	\item \textbf{Verificación:} se colocará una carga conocida simulando el consumo de corriente del EDFA y se comprobará que el dispositivo desconecta la alimentación cuando el nivel de tensión cae por debajo del limite establecido mediante la pantalla táctil.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA y midiendo el nivel de tensión comprobará que el dispositivo desconecta la alimentación cuando esta cae por debajo del limite establecido mediante la pantalla táctil.
+\end{itemize}
+
+\item El dispositivo debe poder conectarse a una computadora mediante USB.
+\begin{itemize}
+	\item \textbf{Verificación:} se comprobará que el dispositivo cuenta con el conector correcto y que es detectado cuando se lo conecta a una PC.
+	\item \textbf{Validación:} el cliente conectará el dispositivo a una PC y comprobará que es detectado por esta.
+\end{itemize}
+
+\end{enumerate}
+
+\item Requerimientos de firmware
+\begin{enumerate}[label*=\arabic*.]
+\item El dispositivo debe utilizar un sistema operativo en tiempo real.
+\begin{itemize}
+	\item \textbf{Verificación:} no aplica.
+	\item \textbf{Validación:} no aplica.
+\end{itemize}
+
+\item El dispositivo debe establecer una comunicación con el EDFA para el envío de comandos mediante una interfaz UART.
+\begin{itemize}
+	\item \textbf{Verificación:} se generará un \textit{loopback} en las señales UART y se comprobará que en el dispositivo se reciben los mismos comandos que se envían.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA, le enviará comandos mediante la interfaz UART y comprobará si este responde correctamente.
+\end{itemize}
+
+\item Cuando el dispositivo se encuentra conectado a una computadora el usuario debe poder, mediante una consola, configurar los mismos parámetros que en la pantalla táctil y además, establecer una comunicación directa con el EDFA.
+\begin{itemize}
+	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
+	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+\end{itemize}
+
+\item El dispositivo debe actualizar la información mostrada en la pantalla al menos cada 0.5 segundos.
+\begin{itemize}
+	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
+	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+\end{itemize}
+
+\item El dispositivo debe interpretar las señales analógicas de entrada, procesarlas y mostrarlas en la pantalla.
+\begin{itemize}
+	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
+	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+\end{itemize}
+
+\end{enumerate}
+
+\end{enumerate}
+
+\item Requerimientos no funcionales:
+\begin{enumerate}
+\item Se deberá generar la documenatación correspondiente.
+\begin{itemize}
+	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
+	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+\end{itemize}
+
+\item El dispositivo debe ser apto para su uso en una sala limpia.
+\begin{itemize}
+	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
+	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+\end{itemize}
+
+\item El dispositivo no debe generar ni emanar ningún tipo de partículas o residuo.
+\begin{itemize}
+	\item \textbf{Verificación:} se comprobará que el dispositivo no emana partículas ni residuos durante su uso en la etapa de validación.
+	\item \textbf{Validación:} el cliente comprobará que el dispositivo no emana partículas ni residuos durante su uso.
+\end{itemize}
+
+\item El dispositivo debe cumplir con la normativa vigente de compatibilidad electromagnética.
+\begin{itemize}
+	\item \textbf{Verificación:} .
+	\item \textbf{Validación:} .
+\end{itemize}
+
+\item El dispositivo no debe generar temperaturas superiores a 40°C.
+\begin{itemize}
+	\item \textbf{Verificación:} se conectará al dispositivo una carga conocida simulando el consumo del EDFA y se lo dejará prendido varias horas. Luego se medirá su temperatura y se comprobará que en ningún punto este excede los 40°C.
+	\item \textbf{Validación:} el cliente procederá al igual que en la verificación pero conectando el dispositivo al EDFA.
+\end{itemize}
+
+\end{enumerate}
+\end{enumerate}
 
 Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
 
-\end{consigna}
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
 
-\begin{consigna}{red}
-Establecer las pautas de trabajo para realizar una reunión final de evaluación del proyecto, tal que contemple las siguientes actividades:
+La reunión que dará cierre al proyecto tendrá lugar durante la presentación y defensa pública del trabajo final de carrera, con presencia de los involucrados e interesados donde se realizarán las siguientes actividades:
 
 \begin{itemize}
-	\item Pautas de trabajo que se seguirán para analizar si se respetó el Plan de Proyecto original:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento a aplicar. 
-	\item Identificación de las técnicas y procedimientos útiles e inútiles que se emplearon, y los problemas que surgieron y cómo se solucionaron:
-	 - Indicar quién se ocupará de hacer esto y cuál será el procedimiento para dejar registro.
-	\item Indicar quién organizará el acto de agradecimiento a todos los interesados, y en especial al equipo de trabajo y colaboradores:
-	  - Indicar esto y quién financiará los gastos correspondientes.
+	\item El responsable del proyecto, Lucas Constantino, analizará junto al director el cumplimiento de los requerimientos, el del WBS y el tiempo en el que se llevó a cabo. Se revisarán las técnicas de diseño aplicadas en el proyecto y se comentará cuales tuvieron éxito y cuales no. A su vez, se repasarán los problemas encontrados y como se resolvieron.
+	\item El responsable del proyecto, Lucas Constantino, comunicará al cliente la finalización del proyecto y hará entrega de toda la documentación correspondiente del producto para su producción. También entregará un informe técnico-económico del producto junto con los reportes de los ensayos de campo
+	\item El responsable del proyecto, Lucas Constantino, elaborará un documento con la memoria y una presentación del producto para su defensa pública ante un jurado evaluador. En ella también se agradecerá al director por haber dirigido y supervisado todo el proyecto, al cliente por la confianza depositada y el aporte financiero y en especial al equipo de colaboradores por su compromiso de trabajo para con el proyecto.
 \end{itemize}
-
-\end{consigna}
 
 
 \end{document}

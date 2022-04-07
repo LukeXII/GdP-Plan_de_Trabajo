@@ -247,7 +247,6 @@ Los requerimientos del proyecto se definieron luego de acordarlos con el cliente
 	\item Requerimientos no funcionales
 		\begin{enumerate}
 			\item Se deberá generar la documenatación correspondiente.
-			\item El dispositivo debe ser apto para su uso en una sala limpia.
 			\item El dispositivo no debe generar ni emanar ningún tipo de partículas o residuo.
 			\item El dispositivo debe cumplir con la normativa vigente de compatibilidad electromagnética.
 			\item El dispositivo no debe generar temperaturas superiores a 40°C.
@@ -621,7 +620,7 @@ Riesgo 5: Faltante de componentes electrónicos
 	\item \textbf{Validación:} el cliente verificará que el dispositivo funcione correctamente cuando se lo conecta a la red mediante la fuente externa.
 \end{itemize}
 
-\item El dispositivo, sin la fuente de alimentaciön externa, no debe pesar mas de 750 g y no debe tener mas de 15 cm de largo, 10 cm de ancho y 6 cm de alto.
+\item El dispositivo, sin la fuente de alimentación externa, no debe pesar mas de 750 g y no debe tener mas de 15 cm de largo, 10 cm de ancho y 6 cm de alto.
 \begin{itemize}
 	\item \textbf{Verificación:} se pesará y medirá el dispositivo.
 	\item \textbf{Validación:} el cliente pesará y medirá el dispositivo.
@@ -698,20 +697,20 @@ Riesgo 5: Faltante de componentes electrónicos
 
 \item Cuando el dispositivo se encuentra conectado a una computadora el usuario debe poder, mediante una consola, configurar los mismos parámetros que en la pantalla táctil y además, establecer una comunicación directa con el EDFA.
 \begin{itemize}
-	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
-	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+	\item \textbf{Verificación:} se generará un \textit{loopback} en las señales UART y se comprobará que al estar conectado a una PC se reciben los mismos comandos que se envían. Además se comprobará que los parámetros en el dispositivo se modifican correctamente.
+	\item \textbf{Validación:} el cliente hará lo mismo que en le verificación pero conectando el dispositivo a un EDFA.
 \end{itemize}
 
 \item El dispositivo debe actualizar la información mostrada en la pantalla al menos cada 0.5 segundos.
 \begin{itemize}
-	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
-	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+	\item \textbf{Verificación:} se variará algun parámetro rápidamente de forma que se aprecie que la tasa de refresco de la pantalla sea la correcta.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA y comprobará que la tasa de refresco de la pantalla sea la correcta.
 \end{itemize}
 
 \item El dispositivo debe interpretar las señales analógicas de entrada, procesarlas y mostrarlas en la pantalla.
 \begin{itemize}
-	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
-	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+	\item \textbf{Verificación:} se simularán las señales de entrada y se comprobará si estas se actualizan correctamente en la pantalla.
+	\item \textbf{Validación:} el cliente conectará el dispositivo al EDFA y comprobará si las señales de entrada son actualizadas correctamente en la pantalla.
 \end{itemize}
 
 \end{enumerate}
@@ -722,14 +721,8 @@ Riesgo 5: Faltante de componentes electrónicos
 \begin{enumerate}
 \item Se deberá generar la documenatación correspondiente.
 \begin{itemize}
-	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
-	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
-\end{itemize}
-
-\item El dispositivo debe ser apto para su uso en una sala limpia.
-\begin{itemize}
-	\item \textbf{Verificación:} para confirmar si se cumplió con lo requerido antes de mostrar el sistema al cliente.
-	\item \textbf{Validación:} con el cliente para confirmar que está de acuerdo en que se cumplió con lo requerido.
+	\item \textbf{Verificación:} se comprobará que la documentación esté completa y se corresponda con el diseño del dispositivo.
+	\item \textbf{Validación:} el cliente hará lo mismo que en la verificación.
 \end{itemize}
 
 \item El dispositivo no debe generar ni emanar ningún tipo de partículas o residuo.
@@ -740,8 +733,8 @@ Riesgo 5: Faltante de componentes electrónicos
 
 \item El dispositivo debe cumplir con la normativa vigente de compatibilidad electromagnética.
 \begin{itemize}
-	\item \textbf{Verificación:} .
-	\item \textbf{Validación:} .
+	\item \textbf{Verificación:} se comprobará que el dispositivo cumple con la norma.
+	\item \textbf{Validación:} el cliente comprobará que el dispositivo cumple con la norma.
 \end{itemize}
 
 \item El dispositivo no debe generar temperaturas superiores a 40°C.
@@ -752,9 +745,6 @@ Riesgo 5: Faltante de componentes electrónicos
 
 \end{enumerate}
 \end{enumerate}
-
-Tener en cuenta que en este contexto se pueden mencionar simulaciones, cálculos, revisión de hojas de datos, consulta con expertos, mediciones, etc.  Las acciones de verificación suelen considerar al entregable como ``caja blanca'', es decir se conoce en profundidad su funcionamiento interno.  En cambio, las acciones de validación suelen considerar al entregable como ``caja negra'', es decir, que no se conocen los detalles de su funcionamiento interno.
-
 
 \section{15. Procesos de cierre}    
 \label{sec:cierre}
